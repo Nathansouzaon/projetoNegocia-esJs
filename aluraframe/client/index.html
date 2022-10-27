@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!---
+    Agora vamos importar esse script no head da nossa página. Isso é necessário porque ele deve alterar Array antes que ele seja usado pela nossa aplicação 
+    -->
+    <meta charset="UTF-8">
+    <title>Negociações</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <script src="js/app/polyfill/es6.js"></script>
+    
+</head>
+<body class="container">
+    
+    <h1 class="text-center">Negociações</h1>
+
+    <div id="mensagemView"></div>
+    
+    <form class="form" onsubmit="negociacaoController.adiciona(event)">
+          
+        <div class="form-group">
+            <label for="data">Data</label>
+            <input type="text" placeholder="dd/mm/aaaa" id="data" class="form-control" required autofocus/>        
+        </div>    
+        
+        <div class="form-group">
+            <label for="quantidade">Quantidade</label>
+            <input type="number" min="1" step="1" id="quantidade" class="form-control" value="1" required/>
+        </div>
+        
+        <div class="form-group">
+            <label for="valor">Valor</label>
+            <input id="valor" type="number" class="form-control"  min="0.01" step="0.01" value="0.0" required />
+        </div>
+        
+        <button class="btn btn-primary" type="submit">Incluir</button>
+    </form>
+    
+    <div class="text-center">
+        <button onclick="negociacaoController.importaNegociacoes()" class="btn btn-primary text-center" type="button">
+            Importar Negociações
+        </button>
+        <button onclick="negociacaoController.apaga()" class="btn btn-primary text-center" type="button">
+            Apagar
+        </button>
+    </div> 
+    <br>
+    <br>
+    <div id="negociacoesView"></div>
+    <script src="js/app/models/Negociacao.js"></script>
+    <script src="js/app/controllers/NegociacaoController.js"></script>
+    <script src="js/app/helpers/dateHelper.js"></script>
+    <script src="js/app/models/listaNegociacoes.js"></script>
+    <script src="js/app/views/View.js"></script>
+    <script src="js/app/views/negociacoesView.js"></script>
+    <script src="js/app/models/Mensagem.js"></script>
+    <script src="js/app/views/mensagemView.js"></script>
+    <script src="js/app/services/ProxyFactory.js"></script>
+    <script src="js/app/helpers/Bind.js"></script>
+    <script src="js/app/services/NegociacaoService.js"></script>
+    <script src="js/app/services/HttpService.js"></script>
+
+    <script>
+        var negociacaoController = new NegociacaoController();
+   
+
+        /*
+        Então, podemos usar a seguinte regra: usamos var quando queremos que a variável tenha escopo global ou de função, e usarmos let quando queremos que a variável tenha sempre escopo de bloco. Em nosso caso, como nosso controller está no escopo global, faz todo sentido usarmos var
+        
+        */
+
+    </script>
+</body>
+</html>
+
+<!--
+  <script>
+
+        let n1 = new Negociacao(new Date(), 5, 700);//passando valores uma unica vez
+   
+//volume de uma negociação e quantidade * valor
+//sempre que chamo meu construtor eu ganho os valores dele
+//var volume = n1.obtemVolume(); //so posso chamar a classe com new 
+//n1.quantidade = 1000;//quando a propriedade e um getter não posso atribuir um valor
+    </script>
+
+
+
+
+
+
+-->
+
